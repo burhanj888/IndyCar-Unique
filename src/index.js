@@ -2,6 +2,7 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LandingPage from "./components/LandingPage";
 import Leaderboard from "./components/Ranking";
+import SkinGenerator from "./components/SkinGenerator";
 
 
 
@@ -12,12 +13,8 @@ export default function App() {
         <Route path="/" element={<LandingPage />}>
         </Route>
         <Route path="/leaderboard" element={<Leaderboard />}></Route>
-        {/* <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="" element={<Blogs />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="*" element={<NoPage />} />
-        </Route> */}
+        <Route path="/ai-skins" element={<SkinGenerator />}></Route>
+        
       </Routes>
     </BrowserRouter>
   );

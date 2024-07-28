@@ -33,7 +33,7 @@ const theme = createTheme({
 });
 
 const LandingPage = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Define navigate using useNavigate
 
   const handleCardClick = (path) => {
     navigate(path);
@@ -45,10 +45,10 @@ const LandingPage = () => {
   };
 
   const cards = [
-    { title: 'Racing Game', description: 'Start and manage your races.', path: '/racing-game', image: racingGameImage },
-    { title: 'Car Exchange', description: 'Buy and sell car ownership.', path: '/car-exchange', image: carExchangeImage },
-    { title: 'Generate Skin', description: 'Use AI to generate new skins for car.', path: '/generate-car', image: generateCarImage },
-    { title: 'Leaderboard', description: 'View race statistics and details.', path: '/leaderboard', image: raceDashboardImage },
+    { title: 'Racing Game', description: 'Start and manage your races.', path: 'http://localhost:8000/landing-page.html', image: racingGameImage, external: true },
+    { title: 'Car Exchange', description: 'Buy and sell car ownership.', path: '/car-exchange', image: carExchangeImage, external: false },
+    { title: 'Generate Skin', description: 'Use AI to generate new skins for car.', path: '/ai-skins', image: generateCarImage, external: false },
+    { title: 'Leaderboard', description: 'View race statistics and details.', path: '/leaderboard', image: raceDashboardImage, external: false },
   ];
 
   return (
@@ -80,19 +80,39 @@ const LandingPage = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Card style={{ backgroundColor: 'white', opacity: '80%' }}>
-                  <CardActionArea onClick={() => handleCardClick(card.path)}>
-                    <CardMedia 
-                    component="img" 
-                    style={{ width: '150px', height: '150px', margin: '20px auto' }}
-                    image={card.image} 
-                    alt={card.title} />
-                    <CardContent>
-                      <Typography variant="h5" color="primary">{card.title}</Typography>
-                      <Typography variant="body2">{card.description}</Typography>
-                    </CardContent>
-                  </CardActionArea>
-                </Card>
+                {card.external ? (
+                  <a href={card.path} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'inherit' }}>
+                    <Card style={{ backgroundColor: 'white', opacity: '80%' }}>
+                      <CardActionArea>
+                        <CardMedia 
+                          component="img" 
+                          style={{ width: '150px', height: '150px', margin: '20px auto' }}
+                          image={card.image} 
+                          alt={card.title} 
+                        />
+                        <CardContent>
+                          <Typography variant="h5" color="primary">{card.title}</Typography>
+                          <Typography variant="body2">{card.description}</Typography>
+                        </CardContent>
+                      </CardActionArea>
+                    </Card>
+                  </a>
+                ) : (
+                  <Card style={{ backgroundColor: 'white', opacity: '80%' }}>
+                    <CardActionArea onClick={() => handleCardClick(card.path)}>
+                      <CardMedia 
+                        component="img" 
+                        style={{ width: '150px', height: '150px', margin: '20px auto' }}
+                        image={card.image} 
+                        alt={card.title} 
+                      />
+                      <CardContent>
+                        <Typography variant="h5" color="primary">{card.title}</Typography>
+                        <Typography variant="body2">{card.description}</Typography>
+                      </CardContent>
+                    </CardActionArea>
+                  </Card>
+                )}
               </motion.div>
             </Grid>
           ))}
