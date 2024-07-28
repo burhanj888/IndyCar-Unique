@@ -1,0 +1,24 @@
+[
+    {
+      "id": 1,
+      "racer": "John Doe",
+      "car": "Ferrari",
+      "company": "Ferrari S.p.A.",
+      "time": "1:23.456"
+    },
+    {
+      "id": 2,
+      "racer": "Jane Smith",
+      "car": "Porsche",
+      "company": "Porsche AG",
+      "time": "1:24.789"
+    },
+    {
+      "id": 3,
+      "racer": "Michael Johnson",
+      "car": "Lamborghini",
+      "company": "Automobili Lamborghini S.p.A.",
+      "time": "1:22.123"
+    }
+  ]
+  
