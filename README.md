@@ -1,6 +1,6 @@
-IndyCar Unique NFT Racing Game
+Phaeton Unique NFT Racing Game
 Project Overview
-IndyCar Unique is a web-based racing game platform that integrates AI-generated skins and NFTs using the Polkadot and Unique networks. Players can generate custom skins for their cars, mint them as NFTs, and trade fractional ownership of cars.
+Phaeton Unique is a web-based racing game platform that integrates AI-generated skins and NFTs using the Polkadot and Unique networks. Players can generate custom skins for their cars, mint them as NFTs, and trade fractional ownership of cars.
 
 Features
 AI-Generated Skins: Create unique skins for racing cars using AI.
@@ -27,8 +27,8 @@ Clone the repository:
 
 bash
 Copy code
-git clone https://github.com/your-username/indycar-unique.git
-cd indycar-unique
+git clone https://github.com/your-username/Phaeton-unique.git
+cd Phaeton-unique
 Install dependencies:
 
 For the React frontend:
