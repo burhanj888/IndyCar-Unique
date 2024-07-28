@@ -5,6 +5,8 @@ import Leaderboard from "./components/Ranking";
 import SkinGenerator from "./components/SkinGenerator";
 import GlobalHeader from "./components/Header";
 import React, { useState } from 'react';
+import Exchange from "./components/Exchange";
+import RFTsPage from "./components/RFTPage";
 
 
 export default function App() {
@@ -18,6 +20,8 @@ export default function App() {
         <Route path="/" element={<LandingPage />}></Route>
         <Route path="/leaderboard" element={<Leaderboard />}></Route>
         <Route path="/ai-skins" element={<SkinGenerator />}></Route>
+        <Route path="/exchange" element={<Exchange />}></Route>
+        <Route path="/rfts/:id" element={<RFTsPage />}></Route>
         
       </Routes>
     </BrowserRouter>

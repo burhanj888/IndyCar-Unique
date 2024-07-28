@@ -49,7 +49,8 @@ const LandingPage = () => {
 
   const cards = [
     { title: 'Racing Game', description: 'Start and manage your races.', path: `http://localhost:8000/landing-page.html?skinUrl=${encodeURIComponent(skinUrl)}`, image: racingGameImage, external: true },
-    { title: 'Exchange', description: 'Buy and sell car ownership.', path: '/car-exchange', image: carExchangeImage, external: false },
+    { title: 'Car Exchange', description: 'Buy and sell car ownership.', path: '/exchange', image: carExchangeImage, external: false },
+
     { title: 'Generate Skin', description: 'Use AI to generate new skins for car.', path: '/ai-skins', image: generateCarImage, external: false },
     { title: 'Leaderboard', description: 'View race statistics and details.', path: '/leaderboard', image: raceDashboardImage, external: false },
   ];
