@@ -1,8 +1,11 @@
 import React from 'react';
 import '../index.css';
 
-const Loader = ({ visible }) => (
-    <div className={`loader ${visible ? '' : 'd-none'}`}></div>
-);
+const Loader = ({ visible }) => {
+    if(!visible){
+        return null
+    }
+    return  <div className="loader"></div>
+}
 
 export default Loader;

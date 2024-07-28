@@ -1,5 +1,5 @@
 // src/components/GlobalHeader.js
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AppBar, Toolbar, Typography, Button } from '@mui/material';
 // import PolkadotIcon from '@mui/icons-material/AccountBalanceWallet';
@@ -7,14 +7,6 @@ import { web3Enable, web3Accounts } from '@polkadot/extension-dapp';
 
 const GlobalHeader = ({ setApi, setAddress }) => {
   const [walletConnected, setWalletConnected] = useState(false);
-
-  useEffect(() => {
-    const storedAddress = localStorage.getItem('address');
-    if (storedAddress) {
-      setAddress(storedAddress);
-      setWalletConnected(true);
-    }
-  }, [setAddress]);
 
   const connectWallet = async () => {
     const extensions = await web3Enable('refungible-marketplace');

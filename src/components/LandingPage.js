@@ -44,9 +44,12 @@ const LandingPage = () => {
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };
 
+  const skinUrl = localStorage.getItem("skinUrl")
+  console.log(skinUrl)
+
   const cards = [
-    { title: 'Racing Game', description: 'Start and manage your races.', path: 'http://localhost:8000/landing-page.html', image: racingGameImage, external: true },
-    { title: 'Car Exchange', description: 'Buy and sell car ownership.', path: '/car-exchange', image: carExchangeImage, external: false },
+    { title: 'Racing Game', description: 'Start and manage your races.', path: `http://localhost:8000/landing-page.html?skinUrl=${encodeURIComponent(skinUrl)}`, image: racingGameImage, external: true },
+    { title: 'Exchange', description: 'Buy and sell car ownership.', path: '/car-exchange', image: carExchangeImage, external: false },
     { title: 'Generate Skin', description: 'Use AI to generate new skins for car.', path: '/ai-skins', image: generateCarImage, external: false },
     { title: 'Leaderboard', description: 'View race statistics and details.', path: '/leaderboard', image: raceDashboardImage, external: false },
   ];
