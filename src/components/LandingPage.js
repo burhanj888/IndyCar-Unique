@@ -72,7 +72,7 @@ const LandingPage = () => {
         }}
       >
         <Typography variant="h2" gutterBottom align="center" style={{ margin: '40px 0', color: '#FFFFFF' }}>
-          Car Racing Game Dashboard
+          Phaeton Racing Game Dashboard
         </Typography>
         <Grid container spacing={4} justifyContent="center">
           {cards.map((card, index) => (
