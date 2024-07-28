@@ -1,13 +1,12 @@
-// src/components/RFTsPage.js
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Container, Box, Typography, CircularProgress, Button, Modal, TextField } from '@mui/material';
+import { Container, Box, Typography, CircularProgress, Button, Modal, TextField, Card, CardContent, CardActions } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import { Sdk, CHAIN_CONFIG } from '@unique-nft/sdk/full';
 import { Sr25519Account } from '@unique-nft/sr25519';
 
 const RFTsPage = () => {
-  const { id } = useParams();
+  const { id: collectionId } = useParams(); // Use the correct parameter name
   const [rfts, setRfts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -15,34 +14,32 @@ const RFTsPage = () => {
   const [quantity, setQuantity] = useState('');
   const [image, setImage] = useState('');
 
-//   useEffect(() => {
-//     fetchRFTs();
-//   }, []);
+  useEffect(() => {
+    fetchRFTs();
+  }, [collectionId]);
 
-//   const fetchRFTs = async () => {
-//     const mnemonicOwner = "impulse actress modify lazy country surface portion shrug cruise notice biology bar";
-//     const owner = Sr25519Account.fromUri(mnemonicOwner);
-//     const sdk = new Sdk({
-//       baseUrl: CHAIN_CONFIG.opal.restUrl,
-//       account: owner,
-//     });
+  const fetchRFTs = async () => {
+    const mnemonicOwner = "impulse actress modify lazy country surface portion shrug cruise notice biology bar";
+    const owner = Sr25519Account.fromUri(mnemonicOwner);
+    const sdk = new Sdk({
+      baseUrl: CHAIN_CONFIG.opal.restUrl,
+      account: owner,
+    });
 
-//     // try {
-//     //   const rfts = await sdk.refungible.getRFTs({ id });
-//     //   setRfts(rfts);
-//     //   setError(null);
-//     // } catch (err) {
-//     //   setError('An error occurred while fetching RFTs');
-//     //   setRfts([]);
-//     // } finally {
-//     //   setLoading(false);
-//     // }
-//     const { amount } = await sdk.refungible.getBalance({
-//         ...mintRFTResult.parsed,
-//         address: "5ExbXSxaVdSwuBtDSXZfFZMvUpY351MWG2tk76av8zPjhvzg",
-//       });
-//       console.log("receiver's balance", amount);
-//   };
+    try {
+      const rftsResult = await sdk.refungible.accountTokens({
+        collectionId: parseInt(collectionId),
+        address: owner.address,
+      });
+      setRfts(rftsResult.tokens);
+      setError(null);
+    } catch (err) {
+      setError('An error occurred while fetching RFTs');
+      setRfts([]);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -54,21 +51,19 @@ const RFTsPage = () => {
       baseUrl: CHAIN_CONFIG.opal.restUrl,
       account: owner,
     });
-    console.log(id)
+
     try {
       const mintRFTResult = await sdk.refungible.createToken({
-        collectionId: id,
-        amount: quantity,
-        data:{
-            image: image
+        collectionId: parseInt(collectionId),
+        amount: parseInt(quantity),
+        data: {
+          image: image, // Assuming image URL is in IPFS format
         },
       });
       console.log('RFT minted:', mintRFTResult);
       handleClose();
-      // Check total pieces for rft
-      const totalPieces = await sdk.refungible.totalPieces(mintRFTResult.parsed);
-      console.log("Total pieces:", totalPieces);
-      //fetchRFTs(); // Refresh the RFTs list
+      await fetchRFTs(); // Refresh the RFTs list
+      console.log("DOne")
     } catch (error) {
       console.error('Error minting RFT:', error);
     }
@@ -91,10 +86,20 @@ const RFTsPage = () => {
           rfts.length > 0 ? (
             <Box display="flex" flexDirection="row" flexWrap="wrap" justifyContent="center">
               {rfts.map((rft) => (
-                <Typography key={rft.id} variant="body1">
-                  {/* Render RFT details here */}
-                  RFT ID: {rft.id} - {rft.name}
-                </Typography>
+                <Card key={rft.tokenId} variant="outlined" style={{ margin: '10px', width: '300px' }}>
+                  <CardContent>
+                    <Typography variant="h6">RFT ID: {rft.tokenId}</Typography>
+                    <Typography color="textSecondary">Quantity: {rft.amount}</Typography>
+                    {rft.data && rft.data.image && (
+                      <img src={rft.data.image} alt={`RFT ${rft.tokenId}`} style={{ width: '100%', height: 'auto', marginTop: '10px' }} />
+                    )}
+                  </CardContent>
+                  <CardActions>
+                    <Button size="small" color="primary" onClick={() => console.log('View details')}>
+                      View Details
+                    </Button>
+                  </CardActions>
+                </Card>
               ))}
             </Box>
           ) : (

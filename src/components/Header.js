@@ -29,7 +29,7 @@ const GlobalHeader = ({ setApi, setAddress }) => {
         <Typography variant="h6" style={{ flexGrow: 1 }}>
             <Link to={'/'}>
             
-          Refungible Token Marketplace
+          <b>Phaeton</b>
           </Link>
         </Typography>
         <Button
