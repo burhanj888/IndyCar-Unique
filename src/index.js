@@ -3,15 +3,19 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LandingPage from "./components/LandingPage";
 import Leaderboard from "./components/Ranking";
 import SkinGenerator from "./components/SkinGenerator";
-
+import GlobalHeader from "./components/Header";
+import React, { useState } from 'react';
 
 
 export default function App() {
+  const [api, setApi] = useState(null);
+  const [address, setAddress] = useState(null);
+
   return (
     <BrowserRouter>
+  <GlobalHeader setAddress={setAddress} />
       <Routes>
-        <Route path="/" element={<LandingPage />}>
-        </Route>
+        <Route path="/" element={<LandingPage />}></Route>
         <Route path="/leaderboard" element={<Leaderboard />}></Route>
         <Route path="/ai-skins" element={<SkinGenerator />}></Route>
         

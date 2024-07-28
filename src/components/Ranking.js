@@ -60,14 +60,7 @@ const Leaderboard = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <AppBar position="static">
-        <Toolbar>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Leaderboard
-          </Typography>
-          <Button color="inherit" onClick={handleBackToHome}>Back to Home</Button>
-        </Toolbar>
-      </AppBar>
+      
       <Container>
         <Typography variant="h2" gutterBottom align="center" style={{ margin: '40px 0' }}>
           Top Racers Leaderboard
