@@ -1,70 +1,95 @@
-# Getting Started with Create React App
+IndyCar Unique NFT Racing Game
+Project Overview
+IndyCar Unique is a web-based racing game platform that integrates AI-generated skins and NFTs using the Polkadot and Unique networks. Players can generate custom skins for their cars, mint them as NFTs, and trade fractional ownership of cars.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Features
+AI-Generated Skins: Create unique skins for racing cars using AI.
+NFT Integration: Mint and trade car skins as NFTs on the Unique Network.
+Fractional Ownership: Buy and sell fractional ownership of cars using re-fungible tokens.
+Project Structure
+Frontend: React application that provides the user interface for the game and marketplace.
+Backend: Node.js server that handles API requests for generating skins and minting NFTs.
+Game Server: Python-based server that hosts the actual racing game.
+Prerequisites
+Node.js (v14 or above)
+Python (v3.x)
+npm (v6 or above)
+Polkadot.js extension installed in your browser
+Environment Variables
+Create a .env file in the root of your React project and add the following variables:
 
-## Available Scripts
+env
+Copy code
+REACT_APP_MNEMONIC=your_mnemonic_value
+REACT_APP_API_URL=http://localhost:3001
+Setup Instructions
+Clone the repository:
 
-In the project directory, you can run:
+bash
+Copy code
+git clone https://github.com/your-username/indycar-unique.git
+cd indycar-unique
+Install dependencies:
 
-### `npm start`
+For the React frontend:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+bash
+Copy code
+cd frontend
+npm install
+For the Node.js backend:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+bash
+Copy code
+cd backend
+npm install
+Running the servers:
 
-### `npm test`
+Game Server (Port 8000):
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+bash
+Copy code
+cd game-server
+python3 -m http.server
+React Server (Port 3000):
 
-### `npm run build`
+bash
+Copy code
+cd frontend
+npm start
+Node Server (Port 3001):
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+bash
+Copy code
+cd backend
+npm run dev
+Running the Project Locally
+Step 1: Start the Game Server
+Run the following command to start the game server, which will host the racing game on port 8000:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+bash
+Copy code
+python3 -m http.server
+Step 2: Start the React Frontend
+Navigate to the frontend directory and start the React development server, which will run on port 3000:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+bash
+Copy code
+cd frontend
+npm start
+Step 3: Start the Node.js Backend
+Navigate to the backend directory and start the Node.js development server, which will run on port 3001:
 
-### `npm run eject`
+bash
+Copy code
+cd backend
+npm run dev
+Accessing the Application
+Game Server: Open your browser and go to http://localhost:8000 to play the racing game.
+React Frontend: Open your browser and go to http://localhost:3000 to access the game's user interface and marketplace.
+Node.js Backend: The backend APIs will be available at http://localhost:3001.
+Contributing
+Contributions are welcome! Please fork the repository and create a pull request with your changes.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+License
+This project is licensed under the MIT License.
